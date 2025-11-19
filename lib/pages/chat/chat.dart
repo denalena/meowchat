@@ -603,6 +603,32 @@ class ChatController extends State<ChatPageWithRoom>
       parseCommands = false;
     }
 
+    // if the user is reacting with a custom emote, try to convert
+    // it to the URI of the emote so that the URI will be set as the
+    // key of the reaction event and render properly
+    if (commandMatch![1] == 'react') {
+      final emotePacks = room.getImagePacksFlat(ImagePackUsage.emoticon);
+      final match = RegExp(
+        r':(?:([-\w]+)~)?([-\w]+):',
+      ).firstMatch(sendController.text);
+      if (match != null) {
+        final pack = match[1];
+        final emote = match[2];
+        String? mxc;
+        if (pack != null) {
+          mxc = emotePacks[pack]?[emote];
+        } else {
+          for (final emotePack in emotePacks.values) {
+            mxc = emotePack[emote];
+            if (mxc != null) break;
+          }
+        }
+        if (mxc != null) {
+          sendController.text = '/react $mxc';
+        }
+      }
+    }
+
     // ignore: unawaited_futures
     room.sendTextEvent(
       sendController.text,
