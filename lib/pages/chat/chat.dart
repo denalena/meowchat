@@ -606,7 +606,7 @@ class ChatController extends State<ChatPageWithRoom>
     // if the user is reacting with a custom emote, try to convert
     // it to the URI of the emote so that the URI will be set as the
     // key of the reaction event and render properly
-    if (commandMatch![1] == 'react') {
+    if (commandMatch?[1] == 'react') {
       final emotePacks = room.getImagePacksFlat(ImagePackUsage.emoticon);
       final match = RegExp(
         r':(?:([-\w]+)~)?([-\w]+):',
