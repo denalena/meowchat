@@ -34,7 +34,7 @@ configurations.all {
 
 
 android {
-    namespace = "chat.fluffy.debugchat"
+    namespace = "chat.fluffy.meowchat"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -70,7 +70,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "chat.fluffy.debugchat"
+        applicationId = "chat.fluffy.meowchat"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

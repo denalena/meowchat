@@ -1,4 +1,4 @@
-package chat.fluffy.debugchat
+package chat.fluffy.meowchat
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
